@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# The script will search for valid directories as annotations on a task
+# The output will be the selected directory and will be copied to the cb
+
+set -e
+
+# Prints an error message to stderr and exits.
+#
+# @param $1 - The error message to print.
+function error_exit() {
+  echo "ERROR: $1" >&2
+  exit 1
+}
+
+function main() {
+  local task_id="$1"
+
+  #Verify that an argument was provided and it's a number.
+  local integer_regex='^[0-9]+$'
+  if ! [[ $task_id =~ $integer_regex ]]; then
+    error_exit "A valid task number must be provided."
+  fi
+
+  #Get all task data in a single call for better performance.
+  local task_json
+  task_json=$(task "$task_id" export || true)
+
+  #Check if the task exists.
+  if [[ -z "$task_json" || "$task_json" == "[]" ]]; then
+    error_exit "Task $task_id does not exist."
+  fi
+
+  #Read all annotation descriptions into a shell array.
+  local all_annotations
+  mapfile -t all_annotations < <(jq -r '.[0].annotations[]?.description' <<<"$task_json")
+
+  if [[ ${#all_annotations[@]} -eq 0 ]]; then
+    error_exit "No annotations found on task $task_id."
+  fi
+
+  #Filter annotations to find only valid directory paths.
+  local valid_dir_paths=()
+  for potential_path in "${all_annotations[@]}"; do
+    if [[ -d "$potential_path" ]]; then
+      valid_dir_paths+=("$potential_path")
+    fi
+  done
+
+  #Check if any valid directory paths were found.
+  if [[ ${#valid_dir_paths[@]} -eq 0 ]]; then
+    error_exit "No annotations on task $task_id correspond to a valid directory path."
+  fi
+
+  #If only one valid path, use it directly without prompting.
+  if [[ ${#valid_dir_paths[@]} -eq 1 ]]; then
+    wl-copy -n "${valid_dir_paths[0]}"
+    echo "${valid_dir_paths[0]}"
+    exit 0
+  fi
+
+  #Interactive selection if multiple valid directory paths are found.
+  echo "Multiple directory paths found in annotations for task $task_id:" >&2
+
+  PS3=$'\nSelect a directory by number (or Ctrl+D to cancel): '
+  select chosen_dir in "${valid_dir_paths[@]}"; do
+    if [[ -n "$chosen_dir" ]]; then
+      wl-copy -n "$chosen_dir"
+      echo "$chosen_dir"
+      exit 0
+    else
+      error_exit "Invalid selection or operation cancelled."
+    fi
+  done
+
+  error_exit "No directory selected."
+}
+
+#Pass all script arguments to the main function.
+main "$@"
