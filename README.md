@@ -1,4 +1,4 @@
-# tw_by_dir
+# tw_by_dir taskwarrior by directory
 Taskwarrior scripts to track tasks in directories
 
 This is inspired by taskopen but works for directories
@@ -27,3 +27,5 @@ taskopen can open the file
 ## taskfzf
 Is the one provided by https://gitlab.com/doronbehar/taskwarrior-fzf/
 With the only addition of Y to sync with taskchampion
+There is another one, with some modifications that allows to open an URL
+https://github.com/petrovag/taskfzf/
