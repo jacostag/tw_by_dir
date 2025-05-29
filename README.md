@@ -25,7 +25,12 @@ I call this one from nvim to create a task, it will include the tag +nvim
 taskopen can open the file
 
 ## taskfzf
-Is the one provided by https://gitlab.com/doronbehar/taskwarrior-fzf/
-With the only addition of Y to sync with taskchampion
-There is another one, with some modifications that allows to open an URL
+
+I added 2, not mine, both are pretty much the same, I have to analyze which one has more capabilities,
+for now, I just added an extra function to sync with taskchampion server using 'Y'
+
+taskfzfprint Is the one provided by https://gitlab.com/doronbehar/taskwarrior-fzf/
+
+
+taskfzfURL Is another one, with some modifications that allows to open an URL
 https://github.com/petrovag/taskfzf/
