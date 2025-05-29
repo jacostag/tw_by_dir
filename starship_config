@@ -1,0 +1,23 @@
+format = '[${custom.task_pwd}$directory$all]($style)' #custom.task_pwd will show on your left an icon if there are tasks on the current directory
+right_format = '[ ${custom} $symbol$time ]($style)' #custom will show all the other custom commands on the right
+
+[custom.task_warrior] #shows important tasks, not my creation
+command = "$HOME/.local/bin/task_prompt.sh"
+when = "which task"
+disabled = false
+description = "Show if there are important tasks"
+style = "red"
+
+[custom.task_count_pending] #this will show all the available tasks
+command = "task count rc.gc=off rc.verbose=nothing status:pending"
+when = "which task"
+disabled = false
+symbol = "  "
+description = "Count of pending Taskwarrior tasks"
+
+[custom.task_pwd] #this one depends on the task-dir.sh script
+command = "$HOME/.local/bin/task-dir.sh"
+when = "which task"
+disabled = false
+#symbol = " "
+description = "Count tasks on current dir as tag"
