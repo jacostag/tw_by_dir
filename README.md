@@ -10,7 +10,7 @@ You can add a new task and the current directory will be saved as an annotation
 Will allow you to display and copy to the clipboard an annotated directory from a task
 it will use wl-copy to add to the clipboard the PATH
 if there are many directories on a task annotation you can select
-an useful alias 'cd $(cdt )' will cd to the task directory
+an useful alias `'cd $(cdt )'` will cd to the task directory
 
 ## task-dir.sh
 This will display an icon, if there is a task in the current directory
