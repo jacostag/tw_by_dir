@@ -19,18 +19,21 @@ I use this one with starship (example of configuration exists on this repo)
 ## task_prompt.sh
 This was not created by me, but I did not find it on github, the author seems to be
 https://github.com/mrichar1
+Is nice to have it on starship prompt
 
 ## task_annotate.sh
 I call this one from nvim to create a task, it will include the tag +nvim
 taskopen can open the file
 
 ## taskfzf
-
-I added 2, not mine, both are pretty much the same, I have to analyze which one has more capabilities,
+I added 2 scripts, not mine, both are pretty much the same, I have to analyze which one has more capabilities,
 for now, I just added an extra function to sync with taskchampion server using 'Y'
 
-taskfzfprint Is the one provided by https://gitlab.com/doronbehar/taskwarrior-fzf/
-
+taskfzfprint Is the one provided by https://gitlab.com/doronbehar/taskwarrior-fzf/ and posix compatible
 
 taskfzfURL Is another one, with some modifications that allows to open an URL
 https://github.com/petrovag/taskfzf/
+
+## notify_tasks.sh
+Using notify-send, this works great on crontab, every hour. It will show a notification for each task due in less than 1 hour,
+allowing you to start it, mark it as done, or setting the due time for 1 more hour.
