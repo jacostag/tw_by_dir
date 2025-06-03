@@ -53,7 +53,7 @@ function main() {
 
   #If only one valid path, use it directly without prompting.
   if [[ ${#valid_dir_paths[@]} -eq 1 ]]; then
-    wl-copy -n "${valid_dir_paths[0]}"
+    wl-copy -n "cd ${valid_dir_paths[0]}"
     echo "${valid_dir_paths[0]}"
     exit 0
   fi
@@ -64,7 +64,7 @@ function main() {
   PS3=$'\nSelect a directory by number (or Ctrl+D to cancel): '
   select chosen_dir in "${valid_dir_paths[@]}"; do
     if [[ -n "$chosen_dir" ]]; then
-      wl-copy -n "$chosen_dir"
+      wl-copy -n "cd $chosen_dir"
       echo "$chosen_dir"
       exit 0
     else
