@@ -2,7 +2,7 @@
 Taskwarrior scripts to manage tasks more comfortable
 
 ## task-add.sh
-You can add a new task and the current directory will be saved as an annotation
+You can add a new task and the current directory will be saved as an annotation with +dir tag
 
 
 ## cdt (cd on to task)
