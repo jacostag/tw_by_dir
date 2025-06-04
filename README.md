@@ -47,7 +47,11 @@ allowing you to start it, mark it as done, or setting the due time for 1 more ho
 Is not using dmenu directly, but it is very easy to adapt to dmenu
 Also uses notify-send, can be switch to another notifier
 Uses walker launcher dmenu emulation to manage taskwarrior.
+
 Can be use as:
+
 `dmenu_taskwarrior.sh add` to add a task directly (no extra options, just add the task with the parameters you want)
+
 `dmenu_taskwarrior.sh list` will list all the current tasks in ready, with the option to start, mark as done, use taskopen, or delete a task (requires confirmation)
+
 `dmenu_taskwarrior.sh` without arguments will display a menu to list or add a task
