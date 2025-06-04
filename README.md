@@ -1,29 +1,26 @@
-# tw_by_dir taskwarrior by directory
-Taskwarrior scripts to track tasks in directories
-
-This is inspired by taskopen but works for directories
-
+# taskwarrior utils
+Taskwarrior scripts to manage tasks more comfortable
 
 ## task-add.sh
 You can add a new task and the current directory will be saved as an annotation
 
 
 ## cdt (cd on to task)
+This is inspired by taskopen but works for directories (I added my taskopenrc that handles almost the same functionality)
 Will allow you to display and copy to the clipboard an annotated directory from a task
 it will use wl-copy to add to the clipboard the PATH
-if there are many directories on a task annotation you can select
+if there are many directories on a task annotation you can select your choice
 an useful alias `'cd $(cdt )'` will cd to the task directory
 
 
 ## task-dir.sh
 This will display an icon, if there is a task in the current directory
-I use this one with starship (example of configuration exists on this repo)
+I use this one with starship (example of configuration exists on this repo) on my left side
 
 
 ## task_prompt.sh
-This was not created by me, but I did not find it on github, the author seems to be
-https://github.com/mrichar1
-Is nice to have it on starship prompt
+This was not created by me, but I did not find it on github, unknown author, but the first script seems very old
+Is nice to have it on starship prompt, it shows different icons on the right (depending on the urgency of the tasks)
 
 
 ## task_annotate.sh
@@ -48,7 +45,9 @@ allowing you to start it, mark it as done, or setting the due time for 1 more ho
 
 ### dmenu_taskwarrior.sh
 Is not using dmenu directly, but it is very easy to adapt to dmenu
+Also uses notify-send, can be switch to another notifier
 Uses walker launcher dmenu emulation to manage taskwarrior.
-Can be use as _dmenu_taskwarrior.sh add_ to add a task directly (no extra options, just add the task with the parameters you want)
-_dmenu_taskwarrior.sh list_ will list all the current tasks in ready, with the option to start, mark as done, use taskopen, or delete a task (requires confirmation)
-_dmenu_taskwarrior.sh_ without arguments will display a menu to list or add a task
+Can be use as:
+`dmenu_taskwarrior.sh add` to add a task directly (no extra options, just add the task with the parameters you want)
+`dmenu_taskwarrior.sh list` will list all the current tasks in ready, with the option to start, mark as done, use taskopen, or delete a task (requires confirmation)
+`dmenu_taskwarrior.sh` without arguments will display a menu to list or add a task
