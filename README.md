@@ -37,3 +37,10 @@ https://github.com/petrovag/taskfzf/
 ## notify_tasks.sh
 Using notify-send, this works great on crontab, every hour. It will show a notification for each task due in less than 1 hour,
 allowing you to start it, mark it as done, or setting the due time for 1 more hour.
+
+### dmenu_taskwarrior.sh
+Is not using dmenu directly, but it is very easy to adapt to dmenu
+Uses walker launcher dmenu emulation to manage taskwarrior.
+Can be use as _dmenu_taskwarrior.sh add_ to add a task directly (no extra options, just add the task with the parameters you want)
+_dmenu_taskwarrior.sh list_ will list all the current tasks in ready, with the option to start, mark as done, use taskopen, or delete a task (requires confirmation)
+_dmenu_taskwarrior.sh_ without arguments will display a menu to list or add a task
