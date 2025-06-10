@@ -55,3 +55,7 @@ Can be use as:
 `dmenu_taskwarrior.sh list` will list all the current tasks in ready, with the option to start, mark as done, use taskopen, or delete a task (requires confirmation)
 
 `dmenu_taskwarrior.sh` without arguments will display a menu to list or add a task
+
+
+### zen_task.sh
+Script to manage tasks in a more graphical way using zenity
