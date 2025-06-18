@@ -2,6 +2,10 @@
 Taskwarrior scripts to manage tasks more comfortable
 
 
+## Ulauncher extension
+[Ulauncher extension](https://pforg.staging.gpcloudtest.com/)
+
+
 ## bee_tw_sync.py
 A python script that uses beeai sdk to get the not done todos from bee, creates a json file with the proper format, removes the emojies and uses task import to add all the tasks to taskwarrior. All the todos are marked as done on bee, task sync is executed.
 beeai has to be installed using pip/pipx/uv.
