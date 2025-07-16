@@ -54,7 +54,7 @@ Using notify-send, this works great on crontab, every hour. It will show a notif
 allowing you to start it, mark it as done, or setting the due time for 1 more hour.
 
 
-### dmenu_taskwarrior.sh
+## dmenu_taskwarrior.sh
 Is not using dmenu directly, but it is very easy to adapt to dmenu
 Also uses notify-send, can be switch to another notifier
 Uses walker launcher dmenu emulation to manage taskwarrior.
@@ -68,5 +68,11 @@ Can be use as:
 `dmenu_taskwarrior.sh` without arguments will display a menu to list or add a task
 
 
-### zen_task.sh
+## zen_task.sh
 Script to manage tasks in a more graphical way using zenity
+
+
+## tw_telegram_bot.py
+A very simple telegram bot in python that will allow to control your task list from telegram. 
+You need to export your env variable TELEGRAM_TOKEN with the token provided by telegram bot father.
+Also, you need to update line 15 to point to your taskrc file.
