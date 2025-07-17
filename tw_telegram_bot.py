@@ -32,6 +32,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     /add <description> - Add a new task
     /done <task_id> - Mark a task as done
     /delete <task_id> - Delete a task
+    /sync - Sync with server
     """
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
@@ -72,6 +73,20 @@ async def add_task(update: Update, context: ContextTypes.DEFAULT_TYPE):
         chat_id=update.effective_chat.id,
         text=f"Task '{description}' added.",
     )
+
+
+async def sync(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    try:
+        w.sync(init=False)
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text="Sync completed",
+        )
+    except Exception as e:
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text=f"Error: {e}",
+        )
 
 
 async def done_task(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -127,6 +142,7 @@ def main():
     add_handler = CommandHandler("add", add_task)
     done_handler = CommandHandler("done", done_task)
     delete_handler = CommandHandler("delete", delete_task)
+    sync_handler = CommandHandler("sync", sync)
 
     application.add_handler(start_handler)
     application.add_handler(help_handler)
@@ -134,6 +150,7 @@ def main():
     application.add_handler(add_handler)
     application.add_handler(done_handler)
     application.add_handler(delete_handler)
+    application.add_handler(sync_handler)
 
     application.run_polling()
 
